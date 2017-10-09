@@ -8,8 +8,8 @@ Page({
     },
     comeBack:function(){
        wx.navigateBack({
-  delta: 1
-})
+       delta: 1
+      })
     
     },
     //画星星
@@ -82,8 +82,23 @@ Page({
       grade: options.grade,
       wrongAmount:options.wrongAmount,
       rightAmount:options.rightAmount,
-      text:text}) 
-    },
-    
+      text:text})
 
+      console.log("debug:答题完成") 
+
+      //保存答题成绩
+      wx.request({
+          url: 'http://localhost:8080/EasyMathServer/student/wx/' + getApp().globalData.openId+'/score', 
+        data: {
+          type: 'test',
+          score: options.grade
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          console.log(res.data)
+        }
+      })
+    },
 });

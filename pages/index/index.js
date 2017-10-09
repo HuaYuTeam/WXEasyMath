@@ -4,7 +4,7 @@ var app = getApp()
 Page({
   data: {
     userInfo: {},
-    item:23,
+    item: 23,
     buttonArray:[{
       name:"button_1",
       id:"button_1",
@@ -16,13 +16,19 @@ Page({
       id:"button_2",
       text:"设置难度",
       type:"default",
-      even:"changeNumberSize",
+      even:"changNumberSize",
     },{
        name:"button_3",
       id:"button_3",
       text:"设置时间",
       type:"default",
       even:"changeTimeSize",
+    }, {
+      name: "button_4",
+      id: "button_4",
+      text: "查询成绩",
+      type: "default",
+      even: "listGrade",
     }]
   },
  
@@ -71,6 +77,19 @@ Page({
   start:function(e){
     wx.navigateTo({
       url: '../newTest/newTest'
+    })
+  },
+  //跳转到teacher
+  teacher: function (e) {
+    wx.navigateTo({
+      url: '../teacher/teacher'
+    })
+  },
+
+  //
+  listGrade: function (e) {
+    wx.navigateTo({
+      url: '../listGrade/listGrade'
     })
   },
   onLoad: function () {

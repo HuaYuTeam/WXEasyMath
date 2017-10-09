@@ -1,13 +1,15 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/newTest/newTest",
-    "pages/end/end"
+    "pages/end/end",
+    "pages/teacher/teacher",
+    "pages/listGrade/listGrade"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#4ED2B8",
     "navigationBarTitleText": "数学计算大挑战",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }

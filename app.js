@@ -1,10 +1,14 @@
 //app.js
+var wxOpenId = ''//用户标识
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+
+   
+
   },
   getUserInfo:function(cb){
     var that = this
@@ -13,11 +17,28 @@ App({
     }else{
       //调用登录接口
       wx.login({
-        success: function () {
+        success: function (loginRes) {
           wx.getUserInfo({
             success: function (res) {
               that.globalData.userInfo = res.userInfo
               typeof cb == "function" && cb(that.globalData.userInfo)
+              console.log(res.userInfo)
+            }
+          })
+
+          wx.request({
+            url: 'https://api.weixin.qq.com/sns/jscode2session?appid='
+            + 'wx8467390ed8b47e59'
+            + '&secret=' + '3076cd6c096f8f3969c9188b682abd58'
+            + '&js_code=' + loginRes.code
+            + '&grant_type=' + 'authorization_code',
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (res) {
+              wxOpenId = res.data.openid
+              console.log('openId : ' + wxOpenId) //获取openid  
+              that.globalData.openId = wxOpenId
             }
           })
         }
@@ -26,6 +47,7 @@ App({
   },
   globalData:{
     userInfo:null,
+    openId:wxOpenId,
   },
   numberSize:10,
   timeSize:1,
