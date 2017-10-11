@@ -7,7 +7,7 @@ function toDate(number) {
   var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
   return (Y + M + D)
 } 
-
+var app = getApp()
 Page({
 
   /**
@@ -24,7 +24,7 @@ Page({
   onLoad: function (options) {
     var that = this
     wx.request({
-      url: 'http://localhost:8080/EasyMathServer/student/listGrade',
+      url: 'http://localhost:8080/EasyMathServer/'+app.role+'/listGrade',
       data: {
         wxid: getApp().globalData.openId
       },

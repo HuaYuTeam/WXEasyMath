@@ -1,8 +1,8 @@
 <!--pages/listGrade/listGrade.wxml-->
 <view class="container">
 <view wx:for="{{gradeList}}" wx:for-index="idx" wx:for-item="itemName">
-   <text class="gradeList">测试时间：{{itemName.createTime}}</text>
-
-   <text class="gradeList">得分：{{itemName.score}}</text>
+    <text class="gradeList">测试时间：{{itemName.createTime}}</text>
+    
+    <text class="gradeList">得分：{{itemName.score}}</text>
 </view>
 </view>

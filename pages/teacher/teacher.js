@@ -10,13 +10,13 @@ Page({
       id: "button_1",
       text: "创建班级",
       type: "primary",
-      even: "start",
+      even: "createClass",
     }, {
       name: "button_2",
       id: "button_2",
       text: "查询成绩",
       type: "default",
-      even: "changNumberSize",
+      even: "searchGrades",
     }]
   },
 
@@ -74,5 +74,10 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  searchGrades: function (e) {
+    wx.navigateTo({
+      url: '../listGrade/listGrade'
+    })
   }
 })

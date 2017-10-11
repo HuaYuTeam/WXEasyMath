@@ -90,7 +90,7 @@ Page({
       wx.request({
           url: 'http://localhost:8080/EasyMathServer/student/wx/' + getApp().globalData.openId+'/score', 
         data: {
-          type: 'test',
+          type: app.numberSize + '_' + app.timeSize,
           score: options.grade
         },
         header: {

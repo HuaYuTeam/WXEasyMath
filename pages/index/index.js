@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 var app = getApp()
+app.role = 'student'
 Page({
   data: {
     userInfo: {},
@@ -16,7 +17,7 @@ Page({
       id:"button_2",
       text:"设置难度",
       type:"default",
-      even:"changNumberSize",
+      even:"changeNumberSize",
     },{
        name:"button_3",
       id:"button_3",
@@ -29,9 +30,15 @@ Page({
       text: "查询成绩",
       type: "default",
       even: "listGrade",
+    }, {
+      name: "button_4",
+      id: "button_4",
+      text: "老师入口",
+      type: "default",
+      even: "teacher",
     }]
   },
- 
+
   //设置难度
   changeNumberSize:function(e){
     wx.showActionSheet({
@@ -81,6 +88,7 @@ Page({
   },
   //跳转到teacher
   teacher: function (e) {
+    app.role = 'teacher'
     wx.navigateTo({
       url: '../teacher/teacher'
     })
